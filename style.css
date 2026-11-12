@@ -1,10 +1,12 @@
 :root {
-    --bg-dark: #0d1117;
-    --bg-card: #161b22;
-    --accent-gold: #d4af37;
-    --accent-blue: #3b82f6;
-    --text-main: #f0f6fc;
-    --text-muted: #8b949e;
+    --bg-snow: #f4f8fb;
+    --bg-card: #ffffff;
+    --sky-light: #cde3f5;
+    --sky-medium: #6ba3d6;
+    --navy-deep: #1b365d;
+    --accent-gold: #c59b27;
+    --text-main: #1e293b;
+    --text-muted: #52657a;
 }
 
 * {
@@ -16,15 +18,15 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--bg-dark);
+    background-color: var(--bg-snow);
     color: var(--text-main);
     line-height: 1.6;
 }
 
-/* Hero Section */
+/* Hero Section - Inspirado en el cielo invernal de la portada */
 .hero {
     height: 85vh;
-    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #090d16 100%);
+    background: linear-gradient(180deg, #9ec6e8 0%, #d8e9f8 60%, var(--bg-snow) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,54 +37,65 @@ body {
 
 .hero-content {
     z-index: 2;
-    max-width: 700px;
+    max-width: 720px;
 }
 
 .subtitle {
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 0.85rem;
-    color: var(--accent-gold);
+    font-weight: 600;
+    color: var(--navy-deep);
     display: block;
     margin-bottom: 10px;
 }
 
 .hero h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 3.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.2rem;
+    font-weight: 700;
+    color: var(--navy-deep);
     margin-bottom: 15px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 15px rgba(255, 255, 255, 0.8);
 }
 
 .hero p {
-    color: var(--text-muted);
+    color: var(--navy-deep);
     font-size: 1.1rem;
+    font-weight: 400;
     margin-bottom: 30px;
+    opacity: 0.85;
 }
 
 .btn-primary {
     display: inline-block;
-    padding: 12px 30px;
-    background-color: transparent;
-    border: 1px solid var(--accent-gold);
-    color: var(--accent-gold);
+    padding: 13px 32px;
+    background-color: var(--navy-deep);
+    border: 1px solid var(--navy-deep);
+    color: #ffffff;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 30px;
+    box-shadow: 0 6px 20px rgba(27, 54, 93, 0.2);
     transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
     background-color: var(--accent-gold);
-    color: var(--bg-dark);
+    border-color: var(--accent-gold);
+    color: #ffffff;
+    transform: translateY(-2px);
 }
 
 /* Main Container */
 .container {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: 40px 20px 70px;
 }
 
 .intro {
@@ -91,14 +104,17 @@ body {
 }
 
 .intro h2, .characters h2 {
-    font-family: 'Cinzel', serif;
-    font-size: 2rem;
-    color: var(--accent-gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--navy-deep);
     margin-bottom: 10px;
 }
 
 .intro p {
     color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto;
 }
 
 /* Tabs */
@@ -112,25 +128,27 @@ body {
 
 .tab-btn {
     background: var(--bg-card);
-    border: 1px solid #30363d;
-    color: var(--text-muted);
+    border: 1px solid #d0e1f0;
+    color: var(--navy-deep);
     padding: 12px 24px;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    border-radius: 6px;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(27, 54, 93, 0.05);
     transition: all 0.3s ease;
 }
 
 .tab-btn:hover {
-    border-color: var(--accent-gold);
-    color: var(--text-main);
+    border-color: var(--sky-medium);
+    background: #eef6fc;
 }
 
 .tab-btn.active {
-    background: var(--accent-gold);
-    color: var(--bg-dark);
-    border-color: var(--accent-gold);
+    background: var(--navy-deep);
+    color: #ffffff;
+    border-color: var(--navy-deep);
+    box-shadow: 0 6px 16px rgba(27, 54, 93, 0.2);
 }
 
 /* Book Showcase */
@@ -140,59 +158,68 @@ body {
     gap: 40px;
     background: var(--bg-card);
     padding: 40px;
-    border-radius: 12px;
-    border: 1px solid #30363d;
+    border-radius: 16px;
+    border: 1px solid #dceaf5;
+    box-shadow: 0 12px 35px rgba(107, 163, 214, 0.12);
     align-items: center;
     transition: opacity 0.3s ease;
 }
 
 .book-cover {
     height: 340px;
-    border-radius: 8px;
-    background: linear-gradient(160deg, #1e293b, #0f172a);
-    border: 2px solid var(--accent-gold);
+    border-radius: 10px;
+    background: linear-gradient(160deg, #8ec2eb, #467bb0);
+    border: 2px solid #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 25px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    color: #ffffff;
+    box-shadow: 0 12px 25px rgba(27, 54, 93, 0.18);
 }
 
 .book-number {
     font-size: 0.8rem;
     letter-spacing: 3px;
-    color: var(--accent-gold);
+    font-weight: 600;
+    color: #fef3c7;
 }
 
 .book-cover h3 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.6rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .book-info h3 {
-    font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    color: var(--navy-deep);
     margin-bottom: 5px;
 }
 
 .book-date {
     display: block;
     color: var(--accent-gold);
+    font-weight: 600;
     font-size: 0.9rem;
     margin-bottom: 20px;
 }
 
 .book-info p {
-    color: #c9d1d9;
+    color: var(--text-main);
     margin-bottom: 20px;
 }
 
 blockquote {
     border-left: 3px solid var(--accent-gold);
-    padding-left: 15px;
+    background: #f8fbfe;
+    padding: 12px 18px;
+    border-radius: 0 8px 8px 0;
     font-style: italic;
-    color: var(--text-muted);
+    color: var(--navy-deep);
 }
 
 /* Characters */
@@ -211,15 +238,20 @@ blockquote {
 .char-card {
     background: var(--bg-card);
     padding: 30px;
-    border-radius: 10px;
-    border: 1px solid #30363d;
+    border-radius: 14px;
+    border: 1px solid #dceaf5;
+    box-shadow: 0 8px 24px rgba(107, 163, 214, 0.08);
     text-align: left;
 }
 
 .char-card h4 {
-    color: var(--accent-gold);
-    font-size: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--navy-deep);
+    font-size: 1.5rem;
     margin-bottom: 10px;
+    border-bottom: 2px solid var(--sky-light);
+    padding-bottom: 6px;
+    display: inline-block;
 }
 
 .char-card p {
@@ -231,14 +263,15 @@ blockquote {
 footer {
     text-align: center;
     padding: 30px;
-    border-top: 1px solid #30363d;
-    color: var(--text-muted);
+    background-color: #eaf3fa;
+    border-top: 1px solid #d0e1f0;
+    color: var(--navy-deep);
     font-size: 0.9rem;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .hero h1 { font-size: 2.3rem; }
+    .hero h1 { font-size: 2.8rem; }
     .book-showcase { grid-template-columns: 1fr; }
     .book-cover { height: 240px; }
 }

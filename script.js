@@ -5,7 +5,7 @@ const libros = [
         fecha: "El comienzo • Cuenta regresiva",
         descripcion: "Para Jenna Brown, su primer año en la universidad supone alejarse de su familia y su novio de toda la vida. Lo que no esperaba era conocer a Jack Ross, el mejor amigo de su compañera de piso, con quien comparte una conexión inevitable... aunque ambos tengan una fecha de caducidad marcada en el calendario.",
         frase: "«A veces, el tiempo no se mide en horas, sino en momentos.»",
-        gradiente: "linear-gradient(160deg, #1e293b, #0f172a)"
+        gradiente: "linear-gradient(160deg, #8ec2eb, #467bb0)"
     },
     {
         numero: "LIBRO II",
@@ -13,7 +13,7 @@ const libros = [
         fecha: "La continuación • Nuevos caminos",
         descripcion: "El tiempo se acabó y diciembre quedó atrás. Jenna intenta reconstruir su vida y seguir adelante tras la despedida, enfrentándose a los recuerdos y a la realidad de la distancia. Sin embargo, cuando los sentimientos son tan fuertes, olvidar no es una opción tan sencilla.",
         frase: "«Lo peor de acostumbrarse a alguien es tener que aprender a vivir sin esa persona.»",
-        gradiente: "linear-gradient(160deg, #31102f, #0f172a)"
+        gradiente: "linear-gradient(160deg, #b8c6e8, #5b6d9c)"
     },
     {
         numero: "LIBRO III",
@@ -21,7 +21,7 @@ const libros = [
         fecha: "El desenlace • La perspectiva de Jack",
         descripcion: "Esta vez la historia se cuenta desde los ojos de Jack Ross. Descubre qué pasaba realmente por su mente durante esos tres meses decisivos, sus miedos, sus secretos y todo lo que estuvo dispuesto a hacer para proteger lo que más le importaba.",
         frase: "«No elegí enamorarme, pero sí elegí quedarme.»",
-        gradiente: "linear-gradient(160deg, #064e3b, #0f172a)"
+        gradiente: "linear-gradient(160deg, #749bc2, #1b365d)"
     }
 ];
 
