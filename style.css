@@ -22,6 +22,7 @@ body {
     color: var(--night-silhouette);
     overflow-x: hidden;
     position: relative;
+    transition: background-color 0.5s ease;
 }
 
 /* Destellos flotantes estilo luces de atardecer */
@@ -56,6 +57,7 @@ body {
     text-align: center;
     padding: 40px 20px;
     position: relative;
+    transition: background 0.5s ease;
 }
 
 .hero-badge {
