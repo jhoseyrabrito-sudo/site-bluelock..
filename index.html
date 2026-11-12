@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trilogía Meses a tu Lado | Joana Marcús</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <span class="subtitle">Una historia de Joana Marcús</span>
+            <h1>Antes de Diciembre</h1>
+            <p>El tiempo se agota, las emociones cambian y cada mes cuenta.</p>
+            <a href="#libros" class="btn-primary">Explorar la Trilogía</a>
+        </div>
+    </header>
+
+    <main id="libros" class="container">
+        <section class="intro">
+            <h2>La Trilogía Original</h2>
+            <p>Descubre la historia de Jenna Brown y Jack Ross a través de los tres libros principales que marcaron un antes y un después.</p>
+        </section>
+
+        <!-- Selector interactivo de libros -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="mostrarLibro(0)">1. Antes de diciembre</button>
+            <button class="tab-btn" onclick="mostrarLibro(1)">2. Después de diciembre</button>
+            <button class="tab-btn" onclick="mostrarLibro(2)">3. Tres meses</button>
+        </div>
+
+        <!-- Tarjeta de visualización del libro -->
+        <section class="book-showcase" id="book-display">
+            <div class="book-cover" id="book-cover">
+                <span class="book-number" id="book-num">LIBRO I</span>
+                <h3 id="cover-title">Antes de diciembre</h3>
+            </div>
+            <div class="book-info">
+                <h3 id="book-title">Antes de diciembre</h3>
+                <span class="book-date" id="book-date">Fecha límite: Antes de que acabe el año</span>
+                <p id="book-desc">
+                    Para Jenna Brown, su primer año en la universidad supone alejarse de su familia y su novio de toda la vida. Lo que no esperaba era conocer a Jack Ross, el mejor amigo de su compañera de piso, con quien comparte una conexión inevitable... aunque ambos tengan una fecha de caducidad marcada en el calendario.
+                </p>
+                <blockquote id="book-quote">
+                    "A veces, el tiempo no se mide en horas, sino en momentos."
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- Sección de personajes principales -->
+        <section class="characters">
+            <h2>Protagonistas</h2>
+            <div class="cards-grid">
+                <div class="char-card">
+                    <h4>Jenna Brown</h4>
+                    <p>Leal, sensible y en busca de su propia identidad lejos de casa. Su mundo da un giro inesperado al entrar a la universidad.</p>
+                </div>
+                <div class="char-card">
+                    <h4>Jack Ross</h4>
+                    <p>Reservado, protector y con un pasado que prefiere mantener oculto. Detrás de su actitud distante esconde una lealtad inquebrantable.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Página tributo hecha por fans • Trilogía <em>Antes de diciembre</em></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
