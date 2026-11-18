@@ -388,7 +388,21 @@ blockquote {
     line-height: 1.6;
     color: #1f293d;
 }
+.card-sue {
+    background: linear-gradient(145deg, #fce7f3, #fbcfe8);
+}
 
+.card-will {
+    background: linear-gradient(145deg, #ffedd5, #fed7aa);
+}
+
+.card-mike {
+    background: linear-gradient(145deg, #e0e7ff, #c7d2fe);
+}
+
+.card-monty {
+    background: linear-gradient(145deg, #fef3c7, #fde68a);
+}
 /* Footer */
 footer {
     background-color: var(--night-silhouette);
