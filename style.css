@@ -24,6 +24,35 @@ body {
     transition: background-color 0.5s ease;
 }
 
+/* Botón flotante de idioma */
+.lang-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9998;
+    background-color: var(--night-silhouette);
+    color: var(--sunset-glow);
+    border: 3px solid var(--white-pure);
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.95rem;
+    padding: 10px 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--night-silhouette);
+    transition: transform 0.18s ease, background-color 0.2s ease;
+}
+
+.lang-btn:hover {
+    transform: translate(-2px, -2px);
+    background-color: var(--sunset-orange);
+    color: var(--white-pure);
+}
+
+.lang-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--night-silhouette);
+}
+
 .floating-shapes .shape {
     position: fixed;
     font-size: 2rem;
@@ -425,7 +454,7 @@ blockquote {
 }
 
 .game-overlay.active {
-    display: flex;
+    display: flex !important;
 }
 
 .game-window {
@@ -585,7 +614,6 @@ blockquote {
     color: var(--night-silhouette);
 }
 
-/* Barra inferior de cambio rápido estilo selector de niveles */
 .game-footer-bar {
     background-color: var(--night-silhouette);
     border-radius: 14px;
@@ -652,32 +680,4 @@ footer {
     .game-body {
         padding: 20px;
     }
-}
-/* Botón flotante de idioma */
-.lang-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9998;
-    background-color: var(--night-silhouette);
-    color: var(--sunset-glow);
-    border: 3px solid var(--white-pure);
-    font-family: 'Fredoka', sans-serif;
-    font-size: 0.95rem;
-    padding: 10px 18px;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 4px 4px 0px var(--night-silhouette);
-    transition: transform 0.18s ease, background-color 0.2s ease;
-}
-
-.lang-btn:hover {
-    transform: translate(-2px, -2px);
-    background-color: var(--sunset-orange);
-    color: var(--white-pure);
-}
-
-.lang-btn:active {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0px var(--night-silhouette);
 }

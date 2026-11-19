@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antes de Diciembre • La Trilogía</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Botón de cambio de idioma -->
     <button type="button" id="lang-toggle-btn" class="lang-btn" onclick="alternarIdioma()">
         🇧🇷 Português
     </button>
@@ -132,9 +131,9 @@
     </main>
 
     <!-- POP-UP ESTILO VENTANA DE JUEGO -->
-    <div id="game-popup-overlay" class="game-overlay" onclick="cerrarPorFondo(event)">
+    <div id="game-popup-overlay" class="game-overlay" style="display: none;" onclick="cerrarPorFondo(event)">
         <div class="game-window" id="game-window">
-            <div class="game-titlebar">
+            <div class="game-titlebar" id="game-titlebar">
                 <span class="game-titlebar-label" id="popup-role">★ PERSONAJE SELECCIONADO</span>
                 <button type="button" class="game-close-btn" onclick="cerrarPersonaje()">✕</button>
             </div>
@@ -505,7 +504,6 @@
             document.getElementById('ui-popup-switch').textContent = t.popupSwitch;
             document.getElementById('ui-footer').innerHTML = t.footer;
 
-            // Actualizar libro actual y modal si está abierto
             mostrarLibro(libroActual);
             if (personajeActual) {
                 abrirPersonaje(personajeActual);
@@ -569,7 +567,7 @@
 
             const infoIdioma = p[idiomaActual];
             const overlay = document.getElementById('game-popup-overlay');
-            const titlebar = document.querySelector('.game-titlebar');
+            const titlebar = document.getElementById('game-titlebar');
 
             document.getElementById('popup-role').textContent = infoIdioma.rol;
             document.getElementById('popup-emoji').textContent = p.emoji;
@@ -585,13 +583,16 @@
                 .map(f => `<div class="game-quote-card">${f}</div>`)
                 .join('');
 
+            overlay.style.display = 'flex';
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
         function cerrarPersonaje() {
             personajeActual = null;
-            document.getElementById('game-popup-overlay').classList.remove('active');
+            const overlay = document.getElementById('game-popup-overlay');
+            overlay.style.display = 'none';
+            overlay.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
