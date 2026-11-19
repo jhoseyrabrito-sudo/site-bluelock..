@@ -4,7 +4,7 @@
     --sunset-gold: #ffbe3b;
     --sunset-glow: #ffe270;
     --night-silhouette: #131c31;
-    --cream-warm: #fff8eb;
+    --cream-warm: #ffefd6;
     --white-pure: #ffffff;
 }
 
@@ -24,7 +24,6 @@ body {
     transition: background-color 0.5s ease;
 }
 
-/* Botón flotante de idioma */
 .lang-btn {
     position: fixed;
     top: 20px;
@@ -46,11 +45,6 @@ body {
     transform: translate(-2px, -2px);
     background-color: var(--sunset-orange);
     color: var(--white-pure);
-}
-
-.lang-btn:active {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0px var(--night-silhouette);
 }
 
 .floating-shapes .shape {
@@ -210,7 +204,7 @@ body {
 }
 
 .tab-btn {
-    background-color: var(--white-pure);
+    background-color: #fff2dc;
     border: 3px solid var(--night-silhouette);
     color: var(--night-silhouette);
     font-family: 'Fredoka', sans-serif;
@@ -224,11 +218,10 @@ body {
 
 .tab-btn:hover {
     transform: translateY(-3px);
-    background-color: var(--sunset-glow);
 }
 
 .tab-btn.active {
-    background: linear-gradient(135deg, var(--sunset-orange), var(--sunset-gold));
+    background: linear-gradient(180deg, #e63946 0%, #ff6b35 50%, #ffbe3b 100%);
     color: var(--white-pure);
     text-shadow: 1px 1px 0px var(--night-silhouette);
     transform: translate(-2px, -2px);
@@ -239,13 +232,13 @@ body {
     display: grid;
     grid-template-columns: 300px 1fr;
     gap: 45px;
-    background-color: var(--white-pure);
+    background: linear-gradient(135deg, #ffe2b8 0%, #ffd09b 100%);
     border: 4px solid var(--night-silhouette);
     border-radius: 24px;
     padding: 40px;
     box-shadow: 10px 10px 0px var(--night-silhouette);
     align-items: center;
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    transition: opacity 0.25s ease, transform 0.25s ease, background 0.4s ease;
 }
 
 .book-cover {
@@ -329,12 +322,12 @@ body {
 .book-info p {
     font-size: 1.05rem;
     line-height: 1.7;
-    color: #2c364b;
+    color: #1f293d;
     margin-bottom: 24px;
 }
 
 blockquote {
-    background: linear-gradient(90deg, #fff0c2, #ffe0b2);
+    background: linear-gradient(90deg, #ffbe3b, #ff9f43);
     border: 3px solid var(--night-silhouette);
     border-radius: 14px;
     padding: 16px 20px;
@@ -344,7 +337,6 @@ blockquote {
     box-shadow: 4px 4px 0px var(--night-silhouette);
 }
 
-/* Characters */
 .characters {
     margin-top: 90px;
     text-align: center;
@@ -380,11 +372,6 @@ blockquote {
 .char-card:hover {
     transform: translate(-3px, -5px);
     box-shadow: 11px 11px 0px var(--night-silhouette);
-}
-
-.char-card:active {
-    transform: translate(2px, 2px);
-    box-shadow: 4px 4px 0px var(--night-silhouette);
 }
 
 .card-jenna { background: linear-gradient(145deg, #fff3d1, #ffd6ba); }
@@ -438,9 +425,7 @@ blockquote {
     align-self: flex-start;
 }
 
-/* ===================================================
-   VENTANA POP-UP ESTILO MENÚ DE VIDEOJUEGO
-   =================================================== */
+/* POP-UP ESTILO MENÚ DE VIDEOJUEGO */
 .game-overlay {
     position: fixed;
     inset: 0;
@@ -453,12 +438,8 @@ blockquote {
     z-index: 9999;
 }
 
-.game-overlay.active {
-    display: flex !important;
-}
-
 .game-window {
-    background-color: var(--cream-warm);
+    background-color: #fff8eb;
     border: 4px solid var(--night-silhouette);
     border-radius: 22px;
     max-width: 880px;
@@ -466,12 +447,6 @@ blockquote {
     max-height: 92vh;
     overflow-y: auto;
     box-shadow: 12px 12px 0px var(--night-silhouette);
-    animation: gamePopIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-@keyframes gamePopIn {
-    0% { transform: scale(0.82); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
 }
 
 .game-titlebar {
@@ -501,13 +476,6 @@ blockquote {
     font-family: 'Fredoka', sans-serif;
     font-size: 1.1rem;
     cursor: pointer;
-    transition: transform 0.15s ease;
-}
-
-.game-close-btn:hover {
-    transform: scale(1.1);
-    background-color: var(--sunset-orange);
-    color: var(--white-pure);
 }
 
 .game-body {
@@ -646,12 +614,10 @@ blockquote {
     padding: 6px 12px;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.15s ease;
 }
 
 .switch-buttons button:hover {
     background-color: var(--sunset-gold);
-    transform: translateY(-2px);
 }
 
 footer {
@@ -676,8 +642,5 @@ footer {
     }
     .game-columns {
         grid-template-columns: 1fr;
-    }
-    .game-body {
-        padding: 20px;
     }
 }
