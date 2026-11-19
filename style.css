@@ -4,7 +4,6 @@
     --sunset-gold: #ffbe3b;
     --sunset-glow: #ffe270;
     --night-silhouette: #131c31;
-    --night-deep: #0b1120;
     --cream-warm: #fff8eb;
     --white-pure: #ffffff;
 }
@@ -25,7 +24,6 @@ body {
     transition: background-color 0.5s ease;
 }
 
-/* Destellos flotantes estilo luces de atardecer */
 .floating-shapes .shape {
     position: fixed;
     font-size: 2rem;
@@ -45,7 +43,6 @@ body {
     50% { transform: translateY(-18px) rotate(15deg); }
 }
 
-/* Hero Section */
 .hero {
     min-height: 88vh;
     background: linear-gradient(180deg, #e63946 0%, #ff6b35 45%, #ffbe3b 100%);
@@ -127,10 +124,8 @@ body {
     transform: translate(-3px, -3px);
     box-shadow: 9px 9px 0px var(--night-silhouette);
     background-color: var(--sunset-orange);
-    color: var(--white-pure);
 }
 
-/* Container & Intro */
 .container {
     max-width: 1050px;
     margin: 0 auto;
@@ -177,7 +172,6 @@ body {
     margin: 0 auto;
 }
 
-/* Tabs */
 .tabs {
     display: flex;
     justify-content: center;
@@ -212,7 +206,6 @@ body {
     box-shadow: 6px 6px 0px var(--night-silhouette);
 }
 
-/* Book Showcase */
 .book-showcase {
     display: grid;
     grid-template-columns: 300px 1fr;
@@ -265,7 +258,6 @@ body {
 .cover-star {
     font-size: 1.5rem;
     color: var(--sunset-glow);
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 
 .book-cover h3 {
@@ -331,7 +323,7 @@ blockquote {
 
 .click-hint {
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #4b5563;
     margin-bottom: 10px;
 }
@@ -353,12 +345,17 @@ blockquote {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .char-card:hover {
     transform: translate(-3px, -5px);
     box-shadow: 11px 11px 0px var(--night-silhouette);
+}
+
+.char-card:active {
+    transform: translate(2px, 2px);
+    box-shadow: 4px 4px 0px var(--night-silhouette);
 }
 
 .card-jenna { background: linear-gradient(145deg, #fff3d1, #ffd6ba); }
@@ -402,185 +399,233 @@ blockquote {
 }
 
 .card-more {
-    font-weight: 800;
+    display: inline-block;
+    background-color: var(--night-silhouette);
+    color: var(--sunset-glow);
+    font-family: 'Fredoka', sans-serif;
     font-size: 0.85rem;
-    color: var(--night-silhouette);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 8px;
     align-self: flex-start;
-    border-bottom: 2px solid var(--night-silhouette);
 }
 
-/* =========================================
-   VENTANA MODAL DE PERSONAJE
-   ========================================= */
-.modal-overlay {
+/* ===================================================
+   VENTANA POP-UP ESTILO MENÚ DE VIDEOJUEGO
+   =================================================== */
+.game-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(11, 17, 32, 0.72);
-    backdrop-filter: blur(5px);
+    background: rgba(11, 17, 32, 0.78);
+    backdrop-filter: blur(4px);
     display: none;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    z-index: 1000;
+    padding: 18px;
+    z-index: 9999;
 }
 
-.modal-overlay.open {
+.game-overlay.active {
     display: flex;
-    animation: fadeInModal 0.25s ease;
 }
 
-@keyframes fadeInModal {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.modal-window {
+.game-window {
     background-color: var(--cream-warm);
     border: 4px solid var(--night-silhouette);
-    border-radius: 26px;
-    max-width: 860px;
+    border-radius: 22px;
+    max-width: 880px;
     width: 100%;
-    max-height: 90vh;
+    max-height: 92vh;
     overflow-y: auto;
-    padding: 36px;
-    position: relative;
     box-shadow: 12px 12px 0px var(--night-silhouette);
-    animation: popInModal 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: gamePopIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-@keyframes popInModal {
-    from { transform: scale(0.92) translateY(15px); opacity: 0; }
-    to { transform: scale(1) translateY(0); opacity: 1; }
+@keyframes gamePopIn {
+    0% { transform: scale(0.82); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
-.modal-close {
-    position: absolute;
-    top: 22px;
-    right: 22px;
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    border: 3px solid var(--night-silhouette);
-    background-color: var(--sunset-orange);
-    color: var(--white-pure);
+.game-titlebar {
+    background: linear-gradient(90deg, #e63946, #ff6b35);
+    border-bottom: 4px solid var(--night-silhouette);
+    padding: 14px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game-titlebar-label {
     font-family: 'Fredoka', sans-serif;
-    font-size: 1.2rem;
+    color: var(--white-pure);
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0px var(--night-silhouette);
+}
+
+.game-close-btn {
+    background-color: var(--night-silhouette);
+    color: var(--sunset-glow);
+    border: 2px solid var(--white-pure);
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1rem;
     cursor: pointer;
-    box-shadow: 3px 3px 0px var(--night-silhouette);
     transition: transform 0.15s ease;
 }
 
-.modal-close:hover {
-    transform: scale(1.08);
-    background-color: var(--night-silhouette);
+.game-close-btn:hover {
+    transform: scale(1.1);
+    background-color: var(--sunset-orange);
+    color: var(--white-pure);
 }
 
-.modal-top-bar {
+.game-body {
+    padding: 28px;
+}
+
+.game-char-banner {
     display: flex;
     align-items: center;
     gap: 18px;
-    padding-bottom: 22px;
-    border-bottom: 3px dashed var(--night-silhouette);
-    margin-bottom: 26px;
+    margin-bottom: 24px;
 }
 
-.modal-emoji {
-    font-size: 2.5rem;
+.game-avatar {
     width: 68px;
     height: 68px;
     background-color: var(--night-silhouette);
     color: var(--sunset-glow);
-    border-radius: 18px;
+    border: 3px solid var(--night-silhouette);
+    border-radius: 16px;
+    font-size: 2.3rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 4px 4px 0px var(--sunset-orange);
+    box-shadow: 4px 4px 0px var(--sunset-gold);
+    flex-shrink: 0;
 }
 
-.modal-role {
-    display: inline-block;
-    background-color: var(--sunset-gold);
-    color: var(--night-silhouette);
-    border: 2px solid var(--night-silhouette);
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    padding: 3px 12px;
-    border-radius: 20px;
-    margin-bottom: 4px;
-}
-
-.modal-top-bar h2 {
+.game-char-banner h2 {
     font-family: 'Fredoka', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     color: var(--night-silhouette);
-    line-height: 1.1;
+    margin-bottom: 6px;
 }
 
-.modal-split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
-
-.modal-bio-col h3,
-.modal-quotes-col h3 {
-    font-family: 'Fredoka', sans-serif;
-    font-size: 1.4rem;
-    color: var(--night-silhouette);
-    margin-bottom: 14px;
-    display: inline-block;
-    background-color: var(--white-pure);
-    border: 2px solid var(--night-silhouette);
-    padding: 4px 14px;
-    border-radius: 10px;
-    box-shadow: 3px 3px 0px var(--night-silhouette);
-}
-
-.modal-bio-col p {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #1f293d;
-    margin-bottom: 18px;
-}
-
-.modal-traits {
+.game-traits {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
 }
 
-.trait-tag {
-    background-color: var(--night-silhouette);
-    color: var(--sunset-glow);
-    font-size: 0.78rem;
-    font-weight: 700;
-    padding: 5px 12px;
+.game-trait {
+    background-color: var(--sunset-gold);
+    color: var(--night-silhouette);
+    border: 2px solid var(--night-silhouette);
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 3px 10px;
     border-radius: 8px;
 }
 
-.quotes-list {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+.game-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-bottom: 24px;
 }
 
-.quote-item {
+.game-panel {
     background-color: var(--white-pure);
     border: 3px solid var(--night-silhouette);
-    border-radius: 14px;
-    padding: 14px 18px;
-    font-style: italic;
-    font-weight: 600;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    color: var(--night-silhouette);
-    box-shadow: 4px 4px 0px var(--night-silhouette);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 5px 5px 0px var(--night-silhouette);
 }
 
-/* Footer */
+.panel-tag {
+    display: inline-block;
+    background-color: var(--night-silhouette);
+    color: var(--sunset-glow);
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.85rem;
+    padding: 5px 12px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+}
+
+.quotes-tag {
+    background-color: var(--sunset-orange);
+    color: var(--white-pure);
+}
+
+.bio-panel p {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: #1f293d;
+}
+
+.game-quotes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.game-quote-card {
+    background-color: #fff8eb;
+    border: 2px solid var(--night-silhouette);
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--night-silhouette);
+}
+
+/* Barra inferior de cambio rápido estilo selector de niveles */
+.game-footer-bar {
+    background-color: var(--night-silhouette);
+    border-radius: 14px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.switch-label {
+    color: var(--sunset-glow);
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.9rem;
+}
+
+.switch-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.switch-buttons button {
+    background-color: var(--white-pure);
+    color: var(--night-silhouette);
+    border: 2px solid var(--sunset-gold);
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.82rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.switch-buttons button:hover {
+    background-color: var(--sunset-gold);
+    transform: translateY(-2px);
+}
+
 footer {
     background-color: var(--night-silhouette);
     color: var(--sunset-glow);
@@ -590,7 +635,6 @@ footer {
     margin-top: 40px;
 }
 
-/* Responsive */
 @media (max-width: 820px) {
     .hero h1 { font-size: 3.2rem; }
     .book-showcase {
@@ -602,10 +646,10 @@ footer {
         max-width: 260px;
         margin: 0 auto;
     }
-    .modal-split {
+    .game-columns {
         grid-template-columns: 1fr;
     }
-    .modal-window {
-        padding: 24px;
+    .game-body {
+        padding: 20px;
     }
 }

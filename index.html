@@ -65,7 +65,7 @@
         <section class="characters">
             <span class="tag-pill pink-pill">PROTAGONISTAS</span>
             <h2>Los Dueños de la Historia</h2>
-            <p class="click-hint">Haz clic en cualquier personaje para ver su biografía y mejores frases ✦</p>
+            <p class="click-hint">Selecciona un personaje para abrir su ficha interactiva 🎮</p>
             <div class="cards-grid">
                 <div class="char-card card-jenna" onclick="abrirPersonaje('jenna')">
                     <div class="char-header">
@@ -73,7 +73,7 @@
                         <h4>Jenna Brown</h4>
                     </div>
                     <p>Leal, espontánea y en busca de su propia voz lejos de casa. Su primer año universitario pone su mundo patas arriba cuando menos lo esperaba.</p>
-                    <span class="card-more">Ver ficha completa →</span>
+                    <span class="card-more">Abrir ficha ✦</span>
                 </div>
                 <div class="char-card card-jack" onclick="abrirPersonaje('jack')">
                     <div class="char-header">
@@ -81,7 +81,7 @@
                         <h4>Jack Ross</h4>
                     </div>
                     <p>Magnético, sarcástico y con un pasado que guarda bajo llave. Detrás de su aparente indiferencia esconde una lealtad capaz de romper sus propias reglas.</p>
-                    <span class="card-more">Ver ficha completa →</span>
+                    <span class="card-more">Abrir ficha ✦</span>
                 </div>
             </div>
         </section>
@@ -96,7 +96,7 @@
                         <h4>Sue</h4>
                     </div>
                     <p>Compañera de habitación de Jenna y amiga inseparable de Jack. Es el puente que une sus mundos desde el primer día y un apoyo incondicional en cada crisis.</p>
-                    <span class="card-more">Ver ficha completa →</span>
+                    <span class="card-more">Abrir ficha ✦</span>
                 </div>
                 <div class="char-card card-will" onclick="abrirPersonaje('will')">
                     <div class="char-header">
@@ -104,7 +104,7 @@
                         <h4>Will</h4>
                     </div>
                     <p>El alma de la fiesta y mejor amigo de Jack. Detrás de su humor despreocupado esconde un corazón enorme y resulta fundamental para entender los secretos del grupo.</p>
-                    <span class="card-more">Ver ficha completa →</span>
+                    <span class="card-more">Abrir ficha ✦</span>
                 </div>
                 <div class="char-card card-mike" onclick="abrirPersonaje('mike')">
                     <div class="char-header">
@@ -112,7 +112,7 @@
                         <h4>Mike</h4>
                     </div>
                     <p>Observador, leal y pieza esencial dentro del círculo cercano de Jack. Su presencia y decisiones marcan giros reveladores en los momentos más tensos de la trilogía.</p>
-                    <span class="card-more">Ver ficha completa →</span>
+                    <span class="card-more">Abrir ficha ✦</span>
                 </div>
                 <div class="char-card card-monty" onclick="abrirPersonaje('monty')">
                     <div class="char-header">
@@ -120,35 +120,55 @@
                         <h4>Monty</h4>
                     </div>
                     <p>El novio de toda la vida de Jenna y el punto de partida de la cuenta regresiva. Su relación a distancia pone a prueba las promesas, la lealtad y el paso del tiempo.</p>
-                    <span class="card-more">Ver ficha completa →</span>
+                    <span class="card-more">Abrir ficha ✦</span>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Ventana Modal de Personaje -->
-    <div id="char-modal" class="modal-overlay" onclick="cerrarModalFondo(event)">
-        <div class="modal-window" id="modal-window">
-            <button type="button" class="modal-close" onclick="cerrarModal()">✕</button>
-            
-            <div class="modal-top-bar">
-                <span class="modal-emoji" id="modal-emoji">✨</span>
-                <div>
-                    <span class="modal-role" id="modal-role">PROTAGONISTA</span>
-                    <h2 id="modal-name">Jenna Brown</h2>
-                </div>
+    <!-- POP-UP ESTILO VENTANA DE JUEGO -->
+    <div id="game-popup-overlay" class="game-overlay" onclick="cerrarPorFondo(event)">
+        <div class="game-window" id="game-window">
+            <!-- Barra superior estilo menú de juego -->
+            <div class="game-titlebar">
+                <span class="game-titlebar-label" id="popup-role">★ PERSONAJE SELECCIONADO</span>
+                <button type="button" class="game-close-btn" onclick="cerrarPersonaje()">✕</button>
             </div>
 
-            <div class="modal-split">
-                <div class="modal-bio-col">
-                    <h3>Mini Biografía</h3>
-                    <p id="modal-bio"></p>
-                    <div class="modal-traits" id="modal-traits"></div>
+            <!-- Contenido de la ventana -->
+            <div class="game-body">
+                <div class="game-char-banner">
+                    <div class="game-avatar" id="popup-emoji">✨</div>
+                    <div>
+                        <h2 id="popup-name">Jenna Brown</h2>
+                        <div class="game-traits" id="popup-traits"></div>
+                    </div>
                 </div>
 
-                <div class="modal-quotes-col">
-                    <h3>Mejores Frases</h3>
-                    <div class="quotes-list" id="modal-quotes"></div>
+                <!-- Columnas: Izquierda Biografía / Derecha Mejores Frases -->
+                <div class="game-columns">
+                    <div class="game-panel bio-panel">
+                        <div class="panel-tag">📖 MINI BIOGRAFÍA</div>
+                        <p id="popup-bio"></p>
+                    </div>
+
+                    <div class="game-panel quotes-panel">
+                        <div class="panel-tag quotes-tag">💬 MEJORES FRASES</div>
+                        <div class="game-quotes-list" id="popup-quotes"></div>
+                    </div>
+                </div>
+
+                <!-- Selector rápido abajo para cambiar de personaje sin cerrar -->
+                <div class="game-footer-bar">
+                    <span class="switch-label">Cambiar personaje:</span>
+                    <div class="switch-buttons">
+                        <button type="button" onclick="abrirPersonaje('jenna')">Jenna</button>
+                        <button type="button" onclick="abrirPersonaje('jack')">Jack</button>
+                        <button type="button" onclick="abrirPersonaje('sue')">Sue</button>
+                        <button type="button" onclick="abrirPersonaje('will')">Will</button>
+                        <button type="button" onclick="abrirPersonaje('mike')">Mike</button>
+                        <button type="button" onclick="abrirPersonaje('monty')">Monty</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -249,27 +269,27 @@
             }, 220);
         }
 
-        const personajesData = {
+        const personajes = {
             jenna: {
                 nombre: "Jenna Brown",
-                rol: "PROTAGONISTA",
+                rol: "★ PROTAGONISTA • NIVEL 01",
                 emoji: "✨",
-                fondoVentana: "#fff6e0",
-                biografia: "Jenna comienza su primer año de universidad con la idea de que su vida ya está perfectamente planeada junto a su novio de toda la vida. Sin embargo, al mudarse lejos de casa y conocer a Jack Ross, descubre facetas de sí misma que desconocía. A lo largo de la trilogía aprende a escuchar sus propios deseos, enfrentar la culpa y tomar decisiones valientes sobre quién quiere ser y a quién quiere amar.",
-                rasgos: ["Leal", "Empática", "Valiente", "En busca de su identidad"],
+                colorBarra: "linear-gradient(90deg, #e63946, #ff6b35)",
+                biografia: "Jenna inicia su primer año de universidad convencida de que su vida está completamente definida junto a su novio de toda la vida. Al mudarse lejos de casa y cruzarse con Jack Ross, descubre facetas de sí misma que no conocía. A lo largo de la historia aprende a escuchar lo que realmente siente y a elegir su propio camino sin miedo.",
+                rasgos: ["Leal", "Espontánea", "Valiente"],
                 frases: [
                     "«A veces, el tiempo no se mide en horas, sino en momentos.»",
                     "«No puedes controlar de quién te enamoras, por mucho que intentes ponerle una fecha límite.»",
-                    "«Me di cuenta de que estaba intentando ser la persona que todos esperaban, menos la que yo quería ser.»"
+                    "«Estaba intentando ser la persona que todos esperaban, menos la que yo quería ser.»"
                 ]
             },
             jack: {
                 nombre: "Jack Ross",
-                rol: "PROTAGONISTA",
+                rol: "⚡ PROTAGONISTA • NIVEL 02",
                 emoji: "⚡",
-                fondoVentana: "#edf2fa",
-                biografia: "Reservado, irónico y con una coraza emocional construida a base de heridas del pasado. Jack evita los compromisos porque cree que todo lo bueno termina marchándose. Cuando Jenna entra en su vida, sus reglas comienzan a tambalearse. En 'Tres meses' conocemos su verdadera profundidad: un chico dispuesto a cargar con el silencio y el sacrificio con tal de proteger a quienes quiere.",
-                rasgos: ["Protector", "Sarcástico", "Reservado", "Lealtad inquebrantable"],
+                colorBarra: "linear-gradient(90deg, #131c31, #2b5876)",
+                biografia: "Reservado, irónico y con una coraza emocional construida por heridas del pasado. Jack evita los vínculos porque cree que todo lo bueno termina yéndose. Cuando Jenna entra en su vida, todas sus reglas se rompen. En 'Tres meses' se revela su verdadero interior: un chico capaz de cualquier sacrificio por proteger a quienes quiere.",
+                rasgos: ["Protector", "Sarcástico", "Fiel"],
                 frases: [
                     "«No elegí enamorarme, pero sí elegí quedarme.»",
                     "«Contigo es la primera vez que no quiero mirar el reloj.»",
@@ -278,37 +298,37 @@
             },
             sue: {
                 nombre: "Sue",
-                rol: "COPROTAGONISTA",
+                rol: "💫 COPROTAGONISTA • ALIADA CLAVE",
                 emoji: "💫",
-                fondoVentana: "#fdf0f7",
-                biografia: "Compañera de cuarto de Jenna en la residencia universitaria y una de las personas más cercanas a Jack. Sue es extrovertida, directa y posee una intuición infalible para notar la química entre Jenna y Jack desde el primer instante. Se convierte en el pilar emocional de Jenna en la universidad y en la voz de la razón cuando las dudas la superan.",
-                rasgos: ["Directa", "Incondicional", "Carismática", "Gran intuición"],
+                colorBarra: "linear-gradient(90deg, #c850c0, #ff5c9d)",
+                biografia: "Compañera de habitación de Jenna en la residencia y gran amiga de Jack. Extrovertida, directa y con una intuición infalible, Sue nota desde el primer segundo la conexión entre Jenna y Jack. Es el apoyo incondicional de Jenna en la universidad y la voz de la verdad cuando las dudas la bloquean.",
+                rasgos: ["Directa", "Incondicional", "Carismática"],
                 frases: [
                     "«Puedes engañar a todo el mundo si quieres, Jenna, pero a mí no me engañas cuando lo miras.»",
-                    "«La vida universitaria no se trata de sobrevivir a los exámenes, sino de descubrir quién eres cuando nadie te mira.»",
-                    "«Las mejores amigas están para decirte la verdad, incluso cuando no quieres escucharla.»"
+                    "«Las mejores amigas están para decirte la verdad, incluso cuando no quieres escucharla.»",
+                    "«La universidad se trata de descubrir quién eres cuando nadie te mira.»"
                 ]
             },
             will: {
                 nombre: "Will",
-                rol: "COPROTAGONISTA",
+                rol: "🔥 COPROTAGONISTA • MEJOR AMIGO",
                 emoji: "🔥",
-                fondoVentana: "#fff3e6",
-                biografia: "El mejor amigo de Jack y el encargado de romper la tensión en los momentos más serios con su sentido del humor. Aunque a primera vista parece despreocupado y bromista, Will es sumamente observador y conoce las cicatrices de Jack mejor que nadie. Su lealtad hacia el grupo es absoluta y juega un papel clave cuando los secretos salen a la luz.",
-                rasgos: ["Divertido", "Observador", "Fiel amigo", "Corazón noble"],
+                colorBarra: "linear-gradient(90deg, #ff512f, #ffbe3b)",
+                biografia: "El mejor amigo de Jack y el encargado de aliviar la tensión en los momentos más difíciles con su sentido del humor. Aunque parece despreocupado, Will es muy observador y conoce las cicatrices de Jack mejor que nadie. Su lealtad hacia el grupo es total cuando los secretos salen a la luz.",
+                rasgos: ["Divertido", "Observador", "Noble"],
                 frases: [
                     "«Llevo años conociendo a Jack y nunca lo había visto perder el control por nadie... hasta que llegaste tú.»",
-                    "«A veces hacerse el gracioso es la única forma de que los demás no noten que estás preocupado.»",
+                    "«Hacerse el gracioso a veces es la única forma de ocultar que estás preocupado.»",
                     "«Los amigos de verdad no te dejan caer cuando todo se pone difícil.»"
                 ]
             },
             mike: {
                 nombre: "Mike",
-                rol: "COPROTAGONISTA",
+                rol: "🌙 COPROTAGONISTA • PIEZA CLAVE",
                 emoji: "🌙",
-                fondoVentana: "#eef0ff",
-                biografia: "Parte esencial del círculo íntimo de Jack y Will. Mike suele mantener un perfil más sereno y analítico, pero su presencia resulta determinante en los momentos más críticos de la historia. Su historia personal y sus decisiones aportan giros reveladores que ayudan a comprender el pasado de Jack y las consecuencias de guardar silencio.",
-                rasgos: ["Analítico", "Sereno", "Clave en la trama", "Confiable"],
+                colorBarra: "linear-gradient(90deg, #1e293b, #4f46e5)",
+                biografia: "Parte fundamental del círculo cercano de Jack y Will. De carácter más sereno y analítico, su presencia resulta decisiva en los giros más tensos de la trilogía. Sus decisiones y su historia ayudan a entender el pasado de Jack y el peso de guardar silencio.",
+                rasgos: ["Sereno", "Analítico", "Confiable"],
                 frases: [
                     "«Guardar secretos para proteger a alguien casi siempre termina doliendo más que la verdad.»",
                     "«No siempre puedes salvar a todos, pero puedes estar ahí cuando decidan levantarse.»",
@@ -317,59 +337,57 @@
             },
             monty: {
                 nombre: "Monty",
-                rol: "COPROTAGONISTA",
+                rol: "⏳ COPROTAGONISTA • PUNTO DE PARTIDA",
                 emoji: "⏳",
-                fondoVentana: "#fef9e6",
-                biografia: "El novio de toda la vida de Jenna antes de que ella se marchara a la universidad. Representa la seguridad, la costumbre y el plan de vida tradicional que Jenna creía querer. La distancia y el paso de los meses ponen a prueba su relación, demostrando que crecer en direcciones distintas a veces es inevitable.",
-                rasgos: ["Tradicional", "Parte del pasado", "Punto de partida", "Relación a distancia"],
+                colorBarra: "linear-gradient(90deg, #d97706, #fbbf24)",
+                biografia: "El novio de toda la vida de Jenna antes de empezar la universidad. Representa la rutina conocida y el plan de vida tradicional que Jenna creía querer. La distancia y el paso del tiempo ponen a prueba su relación, mostrando que crecer por caminos distintos a veces es inevitable.",
+                rasgos: ["Tradicional", "Distancia", "Pasado"],
                 frases: [
                     "«Prometimos que la distancia no iba a cambiar nada entre nosotros.»",
                     "«A veces das por sentado que alguien siempre va a estar en el mismo lugar esperando.»",
-                    "«Cuando dos personas cambian por separado, volver al punto de inicio ya no es posible.»"
+                    "«Cuando dos personas cambian por separado, volver al inicio ya no es posible.»"
                 ]
             }
         };
 
         function abrirPersonaje(id) {
-            const p = personajesData[id];
+            const p = personajes[id];
             if (!p) return;
 
-            const modal = document.getElementById('char-modal');
-            const ventana = document.getElementById('modal-window');
+            const overlay = document.getElementById('game-popup-overlay');
+            const titlebar = document.querySelector('.game-titlebar');
 
-            document.getElementById('modal-emoji').textContent = p.emoji;
-            document.getElementById('modal-role').textContent = p.rol;
-            document.getElementById('modal-name').textContent = p.nombre;
-            document.getElementById('modal-bio').textContent = p.biografia;
+            document.getElementById('popup-role').textContent = p.rol;
+            document.getElementById('popup-emoji').textContent = p.emoji;
+            document.getElementById('popup-name').textContent = p.nombre;
+            document.getElementById('popup-bio').textContent = p.biografia;
+            titlebar.style.background = p.colorBarra;
 
-            ventana.style.backgroundColor = p.fondoVentana;
-
-            document.getElementById('modal-traits').innerHTML = p.rasgos
-                .map(rasgo => `<span class="trait-tag">✦ ${rasgo}</span>`)
+            document.getElementById('popup-traits').innerHTML = p.rasgos
+                .map(r => `<span class="game-trait">✦ ${r}</span>`)
                 .join('');
 
-            document.getElementById('modal-quotes').innerHTML = p.frases
-                .map(frase => `<div class="quote-item">${frase}</div>`)
+            document.getElementById('popup-quotes').innerHTML = p.frases
+                .map(f => `<div class="game-quote-card">${f}</div>`)
                 .join('');
 
-            modal.classList.add('open');
+            overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        function cerrarModal() {
-            const modal = document.getElementById('char-modal');
-            modal.classList.remove('open');
+        function cerrarPersonaje() {
+            document.getElementById('game-popup-overlay').classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
-        function cerrarModalFondo(event) {
-            if (event.target.id === 'char-modal') {
-                cerrarModal();
+        function cerrarPorFondo(e) {
+            if (e.target.id === 'game-popup-overlay') {
+                cerrarPersonaje();
             }
         }
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') cerrarModal();
+            if (e.key === 'Escape') cerrarPersonaje();
         });
     </script>
 </body>
