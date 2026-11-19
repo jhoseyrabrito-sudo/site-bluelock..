@@ -69,60 +69,97 @@
         <section class="characters">
             <span class="tag-pill pink-pill">PROTAGONISTAS</span>
             <h2>Los Dueños de la Historia</h2>
+            <p class="click-hint">Haz clic en cualquier personaje para ver su biografía y mejores frases ✦</p>
             <div class="cards-grid">
-                <div class="char-card card-jenna">
+                <div class="char-card card-jenna" onclick="abrirPersonaje('jenna')">
                     <div class="char-header">
                         <span class="char-emoji">✨</span>
                         <h4>Jenna Brown</h4>
                     </div>
                     <p>Leal, espontánea y en busca de su propia voz lejos de casa. Su primer año universitario pone su mundo patas arriba cuando menos lo esperaba.</p>
+                    <span class="card-more">Ver ficha completa →</span>
                 </div>
-                <div class="char-card card-jack">
+                <div class="char-card card-jack" onclick="abrirPersonaje('jack')">
                     <div class="char-header">
                         <span class="char-emoji">⚡</span>
                         <h4>Jack Ross</h4>
                     </div>
                     <p>Magnético, sarcástico y con un pasado que guarda bajo llave. Detrás de su aparente indiferencia esconde una lealtad capaz de romper sus propias reglas.</p>
+                    <span class="card-more">Ver ficha completa →</span>
                 </div>
             </div>
         </section>
 
-        <!-- Nueva sección de Coprotagonistas -->
+        <!-- Sección de Coprotagonistas -->
         <section class="characters">
             <span class="tag-pill">COPROTAGONISTAS</span>
             <h2>Piezas Clave de la Trama</h2>
             <div class="cards-grid">
-                <div class="char-card card-sue">
+                <div class="char-card card-sue" onclick="abrirPersonaje('sue')">
                     <div class="char-header">
                         <span class="char-emoji">💫</span>
                         <h4>Sue</h4>
                     </div>
                     <p>Compañera de habitación de Jenna y amiga inseparable de Jack. Es el puente que une sus mundos desde el primer día y un apoyo incondicional en cada crisis.</p>
+                    <span class="card-more">Ver ficha completa →</span>
                 </div>
-                <div class="char-card card-will">
+                <div class="char-card card-will" onclick="abrirPersonaje('will')">
                     <div class="char-header">
                         <span class="char-emoji">🔥</span>
                         <h4>Will</h4>
                     </div>
                     <p>El alma de la fiesta y mejor amigo de Jack. Detrás de su humor despreocupado esconde un corazón enorme y resulta fundamental para entender los secretos del grupo.</p>
+                    <span class="card-more">Ver ficha completa →</span>
                 </div>
-                <div class="char-card card-mike">
+                <div class="char-card card-mike" onclick="abrirPersonaje('mike')">
                     <div class="char-header">
                         <span class="char-emoji">🌙</span>
                         <h4>Mike</h4>
                     </div>
                     <p>Observador, leal y pieza esencial dentro del círculo cercano de Jack. Su presencia y decisiones marcan giros reveladores en los momentos más tensos de la trilogía.</p>
+                    <span class="card-more">Ver ficha completa →</span>
                 </div>
-                <div class="char-card card-monty">
+                <div class="char-card card-monty" onclick="abrirPersonaje('monty')">
                     <div class="char-header">
                         <span class="char-emoji">⏳</span>
                         <h4>Monty</h4>
                     </div>
                     <p>El novio de toda la vida de Jenna y el punto de partida de la cuenta regresiva. Su relación a distancia pone a prueba las promesas, la lealtad y el paso del tiempo.</p>
+                    <span class="card-more">Ver ficha completa →</span>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Ventana Modal de Personaje (Mini Biografía + Frases) -->
+    <div id="char-modal" class="modal-overlay" onclick="cerrarModalFondo(event)">
+        <div class="modal-window" id="modal-window">
+            <button class="modal-close" onclick="cerrarModal()">✕</button>
+            
+            <div class="modal-top-bar">
+                <span class="modal-emoji" id="modal-emoji">✨</span>
+                <div>
+                    <span class="modal-role" id="modal-role">PROTAGONISTA</span>
+                    <h2 id="modal-name">Jenna Brown</h2>
+                </div>
+            </div>
+
+            <div class="modal-split">
+                <!-- Columna izquierda: Mini Biografía -->
+                <div class="modal-bio-col">
+                    <h3>Mini Biografía</h3>
+                    <p id="modal-bio"></p>
+                    <div class="modal-traits" id="modal-traits"></div>
+                </div>
+
+                <!-- Columna derecha: Mejores Frases -->
+                <div class="modal-quotes-col">
+                    <h3>Mejores Frases</h3>
+                    <div class="quotes-list" id="modal-quotes"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>Hecho con ♥ por fans de la trilogía <strong>Antes de diciembre</strong> • Joana Marcús</p>

@@ -45,7 +45,7 @@ body {
     50% { transform: translateY(-18px) rotate(15deg); }
 }
 
-/* Hero Section - Degradado idéntico a la portada de Antes de Diciembre */
+/* Hero Section */
 .hero {
     min-height: 88vh;
     background: linear-gradient(180deg, #e63946 0%, #ff6b35 45%, #ffbe3b 100%);
@@ -177,7 +177,7 @@ body {
     margin: 0 auto;
 }
 
-/* Tabs creativas */
+/* Tabs */
 .tabs {
     display: flex;
     justify-content: center;
@@ -329,11 +329,18 @@ blockquote {
     text-align: center;
 }
 
+.click-hint {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 10px;
+}
+
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    margin-top: 35px;
+    margin-top: 30px;
 }
 
 .char-card {
@@ -342,20 +349,24 @@ blockquote {
     padding: 30px;
     text-align: left;
     box-shadow: 8px 8px 0px var(--night-silhouette);
-    transition: transform 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .char-card:hover {
-    transform: translateY(-5px);
+    transform: translate(-3px, -5px);
+    box-shadow: 11px 11px 0px var(--night-silhouette);
 }
 
-.card-jenna {
-    background: linear-gradient(145deg, #fff3d1, #ffd6ba);
-}
-
-.card-jack {
-    background: linear-gradient(145deg, #e2e8f5, #cbd5e1);
-}
+.card-jenna { background: linear-gradient(145deg, #fff3d1, #ffd6ba); }
+.card-jack  { background: linear-gradient(145deg, #e2e8f5, #cbd5e1); }
+.card-sue   { background: linear-gradient(145deg, #fce7f3, #fbcfe8); }
+.card-will  { background: linear-gradient(145deg, #ffedd5, #fed7aa); }
+.card-mike  { background: linear-gradient(145deg, #e0e7ff, #c7d2fe); }
+.card-monty { background: linear-gradient(145deg, #fef3c7, #fde68a); }
 
 .char-header {
     display: flex;
@@ -387,22 +398,188 @@ blockquote {
     font-size: 1rem;
     line-height: 1.6;
     color: #1f293d;
-}
-.card-sue {
-    background: linear-gradient(145deg, #fce7f3, #fbcfe8);
+    margin-bottom: 16px;
 }
 
-.card-will {
-    background: linear-gradient(145deg, #ffedd5, #fed7aa);
+.card-more {
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: var(--night-silhouette);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    align-self: flex-start;
+    border-bottom: 2px solid var(--night-silhouette);
 }
 
-.card-mike {
-    background: linear-gradient(145deg, #e0e7ff, #c7d2fe);
+/* =========================================
+   VENTANA MODAL DE PERSONAJE
+   ========================================= */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(11, 17, 32, 0.72);
+    backdrop-filter: blur(5px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
 }
 
-.card-monty {
-    background: linear-gradient(145deg, #fef3c7, #fde68a);
+.modal-overlay.open {
+    display: flex;
+    animation: fadeInModal 0.25s ease;
 }
+
+@keyframes fadeInModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-window {
+    background-color: var(--cream-warm);
+    border: 4px solid var(--night-silhouette);
+    border-radius: 26px;
+    max-width: 860px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 36px;
+    position: relative;
+    box-shadow: 12px 12px 0px var(--night-silhouette);
+    animation: popInModal 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popInModal {
+    from { transform: scale(0.92) translateY(15px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.modal-close {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    border: 3px solid var(--night-silhouette);
+    background-color: var(--sunset-orange);
+    color: var(--white-pure);
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px var(--night-silhouette);
+    transition: transform 0.15s ease;
+}
+
+.modal-close:hover {
+    transform: scale(1.08);
+    background-color: var(--night-silhouette);
+}
+
+.modal-top-bar {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 22px;
+    border-bottom: 3px dashed var(--night-silhouette);
+    margin-bottom: 26px;
+}
+
+.modal-emoji {
+    font-size: 2.5rem;
+    width: 68px;
+    height: 68px;
+    background-color: var(--night-silhouette);
+    color: var(--sunset-glow);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 4px 4px 0px var(--sunset-orange);
+}
+
+.modal-role {
+    display: inline-block;
+    background-color: var(--sunset-gold);
+    color: var(--night-silhouette);
+    border: 2px solid var(--night-silhouette);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 4px;
+}
+
+.modal-top-bar h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2.5rem;
+    color: var(--night-silhouette);
+    line-height: 1.1;
+}
+
+.modal-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.modal-bio-col h3,
+.modal-quotes-col h3 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.4rem;
+    color: var(--night-silhouette);
+    margin-bottom: 14px;
+    display: inline-block;
+    background-color: var(--white-pure);
+    border: 2px solid var(--night-silhouette);
+    padding: 4px 14px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 0px var(--night-silhouette);
+}
+
+.modal-bio-col p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #1f293d;
+    margin-bottom: 18px;
+}
+
+.modal-traits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.trait-tag {
+    background-color: var(--night-silhouette);
+    color: var(--sunset-glow);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 8px;
+}
+
+.quotes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.quote-item {
+    background-color: var(--white-pure);
+    border: 3px solid var(--night-silhouette);
+    border-radius: 14px;
+    padding: 14px 18px;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--night-silhouette);
+    box-shadow: 4px 4px 0px var(--night-silhouette);
+}
+
 /* Footer */
 footer {
     background-color: var(--night-silhouette);
@@ -424,5 +601,11 @@ footer {
         height: 280px;
         max-width: 260px;
         margin: 0 auto;
+    }
+    .modal-split {
+        grid-template-columns: 1fr;
+    }
+    .modal-window {
+        padding: 24px;
     }
 }
